@@ -19,9 +19,8 @@ function themDanhBa(){
     
 }
 
-
-function showContact() {
-    for ( contact of contacts ) {
+function showContact(ct) {
+    for ( contact of ct ) {
         console.log("Tên: " + contact.name + " / " + "Số điện thoại: " + contact.phone);
     }
 }
@@ -44,10 +43,46 @@ function xoaDanhBa() {
 function suaDanhBa() {
     var namEdit = readlineSync.question('Ten can sua: ');
     console.log('----------------------------------------');   
+    
+    for (i=0;i<contacts.length;i++) {
+        if(contacts[i].name === namEdit) {
+            var namEdited = readlineSync.question('Ten moi: ');
+            var phoneEdited = readlineSync.question('SDT moi: ');
 
-    console.log(namEdit)
+            contacts[i].name = namEdited;
+            contacts[i].phone = phoneEdited;
+        } else {
+            console.log("Ten khong ton tai!");
+            console.log('----------------------------------------');  
+            break;
+        }
+    } 
+    fs.writeFileSync(file, JSON.stringify(contacts));
+    showContact(contacts);
 }
 
+function timDanhBa() {
+    var input = readlineSync.question('Ten hoac SDT: ');
+    var newre = new RegExp( input, 'gi');
+    var arrReturn = [];
+
+    if (isNaN(input)) {
+        for (con of contacts) {
+            if (con.name.search(newre) !== -1) {
+                arrReturn.push(con);
+            }
+        }
+        showContact(arrReturn);
+    } else if(!isNaN(input)) {
+        for (con of contacts) {
+            if (con.phone.search(newre) !== -1) {
+                arrReturn.push(con);
+            }
+        }
+        showContact(arrReturn);
+    }
+    return arrReturn;
+}
 
 function menu() {
     console.log('----------------------------------------');
@@ -64,16 +99,17 @@ function menu() {
         case '1':
             //Them danh ba
             themDanhBa();
-            showContact();
+            showContact(contacts);
             menu();
             break;
         case '2':
             //Sua danh ba
             suaDanhBa();
+            menu();
             break;
         case '3':
             //Tim danh ba
-            console.log(option);
+            timDanhBa();
             break;
         case '4':
             //Xoa danh ba
@@ -82,7 +118,7 @@ function menu() {
             break;
         case '5':
             //hien thi danh ba
-            showContact();
+            showContact(contacts);
             menu();
             break;
         case '6':
