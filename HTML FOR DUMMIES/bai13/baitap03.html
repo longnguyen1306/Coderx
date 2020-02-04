@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bài tập 3</title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Enter your name" />
+    <button onclick="sayHi()">Say Hi!</button>
+
+    <script>
+        // Viết code sao cho khi nhập tên ai đó vào ô input, click vào nút Say Hi! sẽ hiển thị ra alert box với nội dung: Hi kèm theo tên người đó. Ví dụ: Hi Coders.Tokyo
+        function sayHi() {
+            var name = document.getElementById('name').value;
+            if( name === '' ) {
+                alert('Input không đẻ trống !');
+            } else {
+                alert('Hi '+ name);
+            }
+        }
+    </script>
+</body>
+</html>
