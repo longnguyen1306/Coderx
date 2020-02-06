@@ -1,0 +1,27 @@
+<!--// 1. Sử dụng axios để tải nội dung dưới dạng json từ đường link sau về và hiển ra trình duyệt sử dụng document.write-->
+<!--// Link: https://randomuser.me/api/-->
+<!--// Có thể tìm link tới thư viện axios tại: https://cdnjs.com/-->
+<!--// Để thêm thư viện vào jsfiddle, nhấn vào Resources ở cột trái, nhập link vào rồi ấn (+)-->
+<!--// 2. Làm tương tự, thay vì dùng axios, hãy dùng fetch (google để biết cách dùng)-->
+<ul id="list-user"></ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // 1. Sử dụng axios để tải nội dung dưới dạng json từ đường link sau về và hiển ra trình duyệt sử dụng document.write
+    // Link: https://randomuser.me/api/
+    // Có thể tìm link tới thư viện axios tại: https://cdnjs.com/
+    // Để thêm thư viện vào jsfiddle, nhấn vào Resources ở cột trái, nhập link vào rồi ấn (+)
+    // 2. Làm tương tự, thay vì dùng axios, hãy dùng fetch (google để biết cách dùng)\
+
+     var url = "https://randomuser.me/api/";
+     // axios.get(url).then(function (response) {
+     // 	document.write(JSON.stringify(response.data));
+     // });
+
+    fetch(url)
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(resData) {
+            document.write(JSON.stringify(resData));
+        });
+</script>
