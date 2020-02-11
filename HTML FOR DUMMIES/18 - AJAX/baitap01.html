@@ -1,27 +1,58 @@
-<!--// 1. Sử dụng axios để tải nội dung dưới dạng json từ đường link sau về và hiển ra trình duyệt sử dụng document.write-->
-<!--// Link: https://randomuser.me/api/-->
-<!--// Có thể tìm link tới thư viện axios tại: https://cdnjs.com/-->
-<!--// Để thêm thư viện vào jsfiddle, nhấn vào Resources ở cột trái, nhập link vào rồi ấn (+)-->
-<!--// 2. Làm tương tự, thay vì dùng axios, hãy dùng fetch (google để biết cách dùng)-->
-<ul id="list-user"></ul>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-    // 1. Sử dụng axios để tải nội dung dưới dạng json từ đường link sau về và hiển ra trình duyệt sử dụng document.write
-    // Link: https://randomuser.me/api/
-    // Có thể tìm link tới thư viện axios tại: https://cdnjs.com/
-    // Để thêm thư viện vào jsfiddle, nhấn vào Resources ở cột trái, nhập link vào rồi ấn (+)
-    // 2. Làm tương tự, thay vì dùng axios, hãy dùng fetch (google để biết cách dùng)\
 
-     var url = "https://randomuser.me/api/";
-     // axios.get(url).then(function (response) {
-     // 	document.write(JSON.stringify(response.data));
-     // });
+// 1. Tạo một REST api server sử dụng json-server
+// 2. Đọc documentation của json-server và axios, tìm hiểu các method GET, POST, PUT, PATCH, DELETE
+// 3. Làm các ví dụ sử dụng axios để gửi các request lên json-server để tạo object mới, update 1 object với dữ liệu mới, xoá 1 object
+// Lưu ý: đây là một bài khó nếu bạn là beginner, tuy nhiên, khi hiểu được bài này bạn sẽ có thể lên 1 level mới (beginner cao cấp).
+// Hãy dành 1 ngày để đọc, tìm hiểu, thử. Sau 1 ngày nếu bạn không làm được thì có thể hỏi trên Coders.Tokyo Slack hoặc JsLand.
 
-    fetch(url)
-        .then(function(res) {
-            return res.json();
-        })
-        .then(function(resData) {
-            document.write(JSON.stringify(resData));
-        });
+/* 1. Create a REST api server by using json-server.
+  Step 1. npm install -g json-server.
+  Step 2. create file db.json.
+  Step 3. start json-server:json-server --watch db.json.
+  Step 4. Go to : localhost:3000 in browser. */
+/* 3. Example about axios.(GET, POST, PUT, PATCH, DELETE). */
+
+var url = 'http://localhost:3000/users/'
+/*GET request*/
+axios.get(url)
+ .then(function(response) {
+  document.write(JSON.stringify(response.data))
+})
+.catch(function(error) {
+  document.write(error)
+}) 
+/*POST request: post data*/
+/* axios.post(url, {
+  name: 'David',
+  age: 25
+})
+.then(function(response) {
+  document.write(JSON.stringify(response))
+})
+.catch(function(error) {
+  document.write(error)
+}) */
+/*PUT request: update all data*/
+/* axios.put(url + 7, {
+  name: 'Maria'
+})
+.then(function(response) {
+  document.write(JSON.stringify(response))
+})
+.catch(function(error) {
+  document.write(error)
+}) */
+/*PATCH request: update data*/
+// axios.patch(url + 9, {
+//   name: 'Nadal'
+// })
+// .then(function(response) {
+//   document.write(JSON.stringify(response))
+// })
+// .catch(function(error) {
+//   document.write(error)
+// })
+
 </script>

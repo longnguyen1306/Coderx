@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "name": "Hung", "age": 12 },
+    { "id": 2, "name": "HAI", "age": 13 },
+    { "id": 3, "name": "long", "age": 42 },
+    { "id": 4, "name": "nhung", "age": 52 },
+    { "id": 5, "name": "nhan", "age": 16 },
+    { "id": 6, "name": "nga", "age": 17 }
+  ]
+}
